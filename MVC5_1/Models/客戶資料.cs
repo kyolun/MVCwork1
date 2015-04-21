@@ -9,10 +9,9 @@
 
 namespace MVC5_1.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class 客戶資料
     {
         public 客戶資料()
@@ -20,8 +19,6 @@ namespace MVC5_1.Models
             this.客戶聯絡人 = new HashSet<客戶聯絡人>();
             this.客戶銀行資訊 = new HashSet<客戶銀行資訊>();
         }
-
-        [Required]
         public int Id { get; set; }
         [Required]
         public string 客戶名稱 { get; set; }
@@ -36,7 +33,8 @@ namespace MVC5_1.Models
         [Required]
         [RegularExpression(@"\w+\@\w+", ErrorMessage = "Email格式錯誤")]
         public string Email { get; set; }
-    
+        public bool 刪除 { get; set; }
+
         public virtual ICollection<客戶聯絡人> 客戶聯絡人 { get; set; }
         public virtual ICollection<客戶銀行資訊> 客戶銀行資訊 { get; set; }
     }
