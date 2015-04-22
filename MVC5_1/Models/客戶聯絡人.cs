@@ -12,9 +12,10 @@ namespace MVC5_1.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class 客戶聯絡人
     {
+        [Required]
         public int Id { get; set; }
         [Required]
         public int 客戶Id { get; set; }
@@ -23,14 +24,15 @@ namespace MVC5_1.Models
         [Required]
         public string 姓名 { get; set; }
         [Required]
-        [RegularExpression(@"\w+\@\w+", ErrorMessage = "Email格式錯誤")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Email格式錯誤")]
         public string Email { get; set; }
         [Required]
+        [RegularExpression(@"\d{4}-\d{6}", ErrorMessage = "手機格式錯誤,格式需為0912-345678")]
         public string 手機 { get; set; }
         [Required]
         public string 電話 { get; set; }
         public bool 刪除 { get; set; }
-    
+
         public virtual 客戶資料 客戶資料 { get; set; }
     }
 }

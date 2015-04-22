@@ -25,13 +25,14 @@ namespace MVC5_1.Models
         [Required]
         public string 統一編號 { get; set; }
         [Required]
+        [RegularExpression(@"\d{2}-\d{8}", ErrorMessage = "電話格式錯誤,格式需為02-23456789")]
         public string 電話 { get; set; }
         [Required]
         public string 傳真 { get; set; }
         [Required]
         public string 地址 { get; set; }
         [Required]
-        [RegularExpression(@"\w+\@\w+", ErrorMessage = "Email格式錯誤")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Email格式錯誤")]
         public string Email { get; set; }
         public bool 刪除 { get; set; }
 
